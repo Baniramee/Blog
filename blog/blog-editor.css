@@ -1,11 +1,11 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #fef7e9;
+    background-color: #e9f4fe;
     margin: 0;
     padding: 0;
 }
 
-.create-container {
+.editor-container {
     width: 70%;
     max-width: 800px;
     margin: 50px auto;
@@ -53,7 +53,7 @@ textarea {
 
 .publish-button {
     padding: 10px 20px;
-    background-color: #fc9e24;
+    background-color: #d09bf1;
     color: white;
     border: none;
     border-radius: 4px;
@@ -63,5 +63,5 @@ textarea {
 }
 
 .publish-button:hover {
-    background-color: #d57e1a;
+    background-color: #906ea3;
 }
