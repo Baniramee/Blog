@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif; 
+    background-color: #fef7e9; 
+    margin: 0; 
+    padding: 0;
+}
+
+.register {
+    width: 700px;
+    margin: 50px auto;
+    padding: 20px; 
+    background-color: white; 
+    border-radius: 3px; 
+
+}
+
+.register h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.register-form {
+    width: 250px;
+    margin: 0 auto;
+}
+
+.control-group {
+    margin-bottom: 20px;
+}
+
+.login-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.btn {
+    width: 150px;
+    padding: 10px 0;
+    background-color: #fc9e24;
+    color: white;
+    margin-top: 10px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.register-link {
+    text-align: center;
+    color: #fc9e24;
+    margin-top: 10px;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+
+<body>
+    <section class="form-contents">
+        <form class="login-form" th:action="@{/admin/login/process}" method="post">
+            <h2>ログイン</h2>
+            <div class="control-group">
+                <label class="login-field-icon" for="login-name">メールアドレス</label>
+                <input type="text" class="login-field" placeholder="username" id="login-name" name="adminEmail">
+            </div>
+            <div class="control-group">
+                <label class="login-field-icon" for="login-pass">パスワード</label>
+                <input type="password" class="login-field" placeholder="password" id="login-pass" name="password">
+            </div>
+            <div class="control-group control-position">
+                <button class="btn">ログイン</button>
+            </div>
+            <div class="control-group control-position">
+                <a class="login-link" th:href="@{/admin/register}">登録はこちら</a>
+            </div>
+
+        </form>
+    </section>
+</body>
+
+</html>
