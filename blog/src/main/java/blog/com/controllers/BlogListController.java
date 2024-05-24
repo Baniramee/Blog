@@ -19,17 +19,22 @@ public class BlogListController {
 	@Autowired
 	private BlogService blogService;
 
+	// ブログ一覧画面を表示
 	@GetMapping("/blog/list")
 	public String getBlogList(Model model) {
-
+		// sessionからログインしている人の情報を取得
 		Admin admin = (Admin) session.getAttribute("loginAdminInfo");
-
+		// もし、admin==null　ログイン画面にリダイレクト
 		if (admin == null) {
 			return "redirect:/admin/login";
+			// そうでない場合、ログインしている人のidに基づいて、ブログリストを取得
 		} else {
 			List<Blog> blogList = blogService.selectAllBlogList(admin.getAdminId());
+			// モデルにadminの名前を追加
 			model.addAttribute("adminName", admin.getAdminName());
+			// モデルにブログリストを追加
 			model.addAttribute("blogList", blogList);
+			// ブログ一覧画面を表示
 			return "blog-list.html";
 		}
 	}

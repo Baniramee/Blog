@@ -2,33 +2,34 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" th:href="@{/css/blog-list.css}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/blog-list.css}">
 </head>
 
 <body>
-    <div class="list-container">
-        <h1>ブログ一覧</h1>
-		<a th:href="@{/blog/create}">登録</a>
-       <div th:each="blog:${blogList}" class="blog-card">
-		
-            <div>
-                <a th:href="@{/blog/edit/{blogId}(blogId=${blog.blogId})}">
-                    <h2 class="blog-title" th:text="${blog.blogTitle}">ブログのタイトル</h2>
-                    <p class="blog-summary" th:text="${blog.blogArticle}">ブログの概要</p>
-					<div class="blog-image-container">
-						<img th:src="@{/blog/image/{blogImage}(blogImage=${blog.blogImage})}">
-					</div>
-                    <p class="blog-date">投稿日</p>
-                </a>
+	<div class="list-container">
+		<h1>ブログ一覧</h1>
+		<a th:href="@{/blog/create}" class="register-button">登録</a>
+		<div th:each="blog:${blogList}" class="blog-card">
+			<div class="blog-image-container">
+				<img th:src="@{/blog-img/{blogImage}(blogImage=${blog.blogImage})}">
+			</div>
+
+			<div class="blog-content">
+				<a th:href="@{/blog/edit/{blogId}(blogId=${blog.blogId})}">
+					<h2 class="blog-title" th:text="${blog.blogTitle}">ブログのタイトル</h2>
+					<p class="blog-summary" th:text="${blog.blogArticle}">ブログの概要</p>
+
+					<p class="blog-date">投稿日</p>
+				</a>
 				<div class="blog-actions">
-				    <a th:href="@{/blog/edit/{blogId}(blogId=${blog.blogId})}" class="edit-button">編集</a>
+					<a th:href="@{/blog/edit/{blogId}(blogId=${blog.blogId})}" class="edit-button">編集</a>
 				</div>
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>

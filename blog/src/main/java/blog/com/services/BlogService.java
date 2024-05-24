@@ -12,18 +12,24 @@ public class BlogService {
 	private BlogDao blogDao;
 
 	public List<Blog> selectAllBlogList(Long adminId) {
+		// もし、管理者IDがnullの場合、nullを返す
 		if (adminId == null) {
 			return null;
+			// そうでない場合、全てのブログを取得
 		} else {
 			return blogDao.findAll();
 		}
 	}
 
-	public boolean createBlog(String blogCategory, String blogArticle, String blogImage,
-			String blogTitle, Long adminId) {
+	
+	public boolean createBlog(String blogCategory, String blogArticle, String blogImage, String blogTitle,
+			Long adminId) {
+		// もし、ブログタイトルがnull場合、新しいブログとして保存
 		if (blogDao.findByBlogTitle(blogTitle) == null) {
 			blogDao.save(new Blog(blogCategory, blogArticle, blogImage, blogTitle, adminId));
+			// 新しいブログが正常に保存された場合、trueに返す
 			return true;
+			// そうでない場合、falseに返す
 		} else {
 			return false;
 		}
@@ -31,17 +37,21 @@ public class BlogService {
 	}
 
 	public Blog blogEditCheck(Long blogId) {
+		// もし、ブログIDがnull場合、nullに返す
 		if (blogId == null) {
 			return null;
+			// そうでない場合、ブログIDに基づいてブログを検索
 		} else {
 			return blogDao.findByBlogId(blogId);
 		}
 	}
-	public boolean blogUpdate(Long blogId, String blogCategory, 
-			String blogArticle, String blogImage,
-			String blogTitle, Long adminId) {
+
+	public boolean blogUpdate(Long blogId, String blogCategory, String blogArticle, String blogImage, String blogTitle,
+			Long adminId) {
+		// もし、ブログIDがnull場合、falseに返す
 		if (blogId == null) {
 			return false;
+			// そうでない場合、ブログの情報を更新
 		} else {
 			Blog blog = blogDao.findByBlogId(blogId);
 			blog.setBlogCategory(blogCategory);
@@ -53,17 +63,15 @@ public class BlogService {
 			return true;
 		}
 	}
+
 	public boolean deleteBlog(Long blogId) {
-		if(blogId == null) {
+		// もし、ブログIDがnull場合、falseに返す
+		if (blogId == null) {
 			return false;
-		}else {
+			// そうでない場合、ブログIDに基づいてブログを削除
+		} else {
 			blogDao.deleteByBlogId(blogId);
 			return true;
 		}
 	}
-
-	
-	
 }
-
-

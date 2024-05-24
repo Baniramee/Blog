@@ -8,13 +8,17 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AdminLogoutController {
+
+	// sessionを導入
 	@Autowired
 	private HttpSession session;
 
-	@GetMapping ("/admin/logout")
+	//　ログアウトに処理
+	@GetMapping("/admin/logout")
 	public String adminLogout() {
-
+		// sessionを無効化
 		session.invalidate();
-		return"redirect:/admin/login";
+		// ログアウトした後、ログイン画面にリダイレクト
+		return "redirect:/admin/login";
 	}
 }

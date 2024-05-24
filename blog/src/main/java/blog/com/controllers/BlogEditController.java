@@ -59,14 +59,11 @@ public class BlogEditController {
 
         // セッションからログインしている人の情報をadminという変数に格納
         Admin admin = (Admin) session.getAttribute("loginAdminInfo");
-        // もし、admin== null だったら、ログイン画面にリダイレクトする
-        // そうでない場合、
-        // ファイルの保存
-        // もし、blogUpdate の結果がtrueの場合は、ブログ一覧にリダイレクト
-        // そうでない場合、ブログ編集画面にリダイレクトする
+        // もし、admin== null だったら、ログイン画面にリダイレクト
         if (admin == null) {
             return "redirect:/admin/login";
-
+            // そうでない場合、
+            // ファイルの保存
         } else {
             String fileName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-").format(new Date())
                     + blogImage.getOriginalFilename();
@@ -76,9 +73,11 @@ public class BlogEditController {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+         // もし、blogUpdate の結果がtrueの場合は、ブログ一覧にリダイレクト
             if (blogService.blogUpdate(blogId, blogCategory, blogArticle, fileName, blogTitle,
                     admin.getAdminId())) {
                 return "redirect:/blog/list";
+                // そうでない場合、ブログ編集画面にリダイレクト
             } else {
                 return "redirect:/blog/edit" + blogId;
             }
